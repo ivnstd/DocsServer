@@ -9,7 +9,6 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -104,7 +103,6 @@ func (h *Handler) GetDocument(c *gin.Context) {
 	token := c.Query("token")
 
 	// Проверка токена
-	logrus.Debugf("token %v", token)
 	user, err := h.services.Users.CheckAuth(c.Request.Context(), token)
 	if err != nil {
 		newResponse(c, http.StatusUnauthorized, ErrUnauthorized, nil, nil)
