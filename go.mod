@@ -1,6 +1,6 @@
 module docs_server
 
-go 1.22.2
+go 1.22.5
 
 require (
 	github.com/gin-gonic/gin v1.10.0
