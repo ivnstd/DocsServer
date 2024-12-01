@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  docs-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docs-server
+    environment:
+      - ENV_FILE_PATH=/app/.env
+    volumes:
+      - ./.env:/app/.env
+    depends_on:
+      mongo-db:
+        condition: service_started
+    ports:
+      - "8080:8080"
+
+  mongo-db:
+    image: mongo:6.0
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

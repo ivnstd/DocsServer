@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "4179ce1f-8ba2-47ee-b4ef-05392f2d9e85",
+		"name": "DocsServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30405749"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "1. Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"token\": \"12345678abcdefgh12345678abcdefgh\",\n  \"login\": \"anastasiYA\",\n  \"pswd\": \"qwerty123A++\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"login\": \"anastasiYA\",\n  \"pswd\": \"qwerty123A++\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/auth",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. EndSession",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/auth/003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Docs",
+			"item": [
+				{
+					"name": "3. PostDoc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "12345",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "meta",
+									"value": "{ \"name\": \"my_photo.jpg\", \"file\": true, \"public\": true, \"token\": \"003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46\", \"mime\": \"image/jpg\", \"grant\": [\"login123456\", \"login1234567\"] }",
+									"description": "параметры запроса",
+									"type": "text"
+								},
+								{
+									"key": "json",
+									"value": "{ \"some key\": \"some value\", \"another key\": \"another value\" }",
+									"description": "данные документа",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "файл документа",
+									"type": "file",
+									"src": "/home/ivnstd/Documents/image.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/docs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. GetDocs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "mytoken",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/docs?token=003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docs"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "anastasiYA",
+									"disabled": true
+								},
+								{
+									"key": "key",
+									"value": "name",
+									"disabled": true
+								},
+								{
+									"key": "value",
+									"value": "my_photo.jpg",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. GetDocs",
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "token",
+								"value": "mytoken",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/docs?login=login1&key=name&limit=5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docs"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "login1"
+								},
+								{
+									"key": "key",
+									"value": "name"
+								},
+								{
+									"key": "value",
+									"value": "mydoc2.json",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. GetDoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/docs/674c076ee9df7a40ac87cf67?token=003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docs",
+								"674c076ee9df7a40ac87cf67"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. GetDoc",
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "token",
+								"value": "mytoken",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/docs/6749c800d0fd9bd7bda54af1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docs",
+								"6749c800d0fd9bd7bda54af1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. DelDoc",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/docs/674c076ee9df7a40ac87cf67?token=003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docs",
+								"674c076ee9df7a40ac87cf67"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
