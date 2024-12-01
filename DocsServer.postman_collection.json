@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4179ce1f-8ba2-47ee-b4ef-05392f2d9e85",
+		"_postman_id": "f00486a8-384d-48f7-be6f-55ef3de3e582",
 		"name": "DocsServer",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "30405749"
@@ -120,11 +120,6 @@
 								"key": "Content-Type",
 								"value": "multipart/form-data",
 								"type": "text"
-							},
-							{
-								"key": "token",
-								"value": "12345",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -172,13 +167,7 @@
 					"name": "4. GetDocs",
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "token",
-								"value": "mytoken",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "http://127.0.0.1:8080/api/docs?token=003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46",
 							"protocol": "http",
@@ -227,15 +216,9 @@
 					"name": "4. GetDocs",
 					"request": {
 						"method": "HEAD",
-						"header": [
-							{
-								"key": "token",
-								"value": "mytoken",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/docs?login=login1&key=name&limit=5",
+							"raw": "http://127.0.0.1:8080/api/docs?login=anastasiYA&key=name&limit=5&token=003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -251,7 +234,7 @@
 							"query": [
 								{
 									"key": "login",
-									"value": "login1"
+									"value": "anastasiYA"
 								},
 								{
 									"key": "key",
@@ -259,12 +242,16 @@
 								},
 								{
 									"key": "value",
-									"value": "mydoc2.json",
+									"value": "my_photo.jpg",
 									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "5"
+								},
+								{
+									"key": "token",
+									"value": "003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46"
 								}
 							]
 						}
@@ -312,15 +299,9 @@
 					"name": "5. GetDoc",
 					"request": {
 						"method": "HEAD",
-						"header": [
-							{
-								"key": "token",
-								"value": "mytoken",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/docs/6749c800d0fd9bd7bda54af1",
+							"raw": "http://127.0.0.1:8080/api/docs/6749c800d0fd9bd7bda54af1?token=003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -333,6 +314,12 @@
 								"api",
 								"docs",
 								"6749c800d0fd9bd7bda54af1"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "003617e9c93c52a4e106c58aec796f37aab84649aee773bdcf540d1e0f1adb46"
+								}
 							]
 						}
 					},
